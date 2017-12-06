@@ -3,3 +3,4 @@
   book table with title and call number
 These two tables should have a many-to-many relationship
 
+Adding a note as a test for learning git
