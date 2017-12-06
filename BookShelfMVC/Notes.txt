@@ -1,0 +1,5 @@
+﻿need to create mulitple tables in the database:
+  author table with first and last name
+  book table with title and call number
+These two tables should have a many-to-many relationship
+

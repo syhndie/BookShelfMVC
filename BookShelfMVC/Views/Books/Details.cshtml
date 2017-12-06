@@ -1,0 +1,35 @@
+﻿@model BookShelfMVC.Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2 id="body-content-title">Book Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            Author
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AuthorFirstName) @Html.DisplayFor(model => model.AuthorLastName) 
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CallNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CallNumber)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

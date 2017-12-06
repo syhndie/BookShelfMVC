@@ -1,0 +1,38 @@
+﻿@model BookShelfMVC.Models.Book
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2 id="body-content-title">Delete Book</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            Author
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AuthorFirstName) @Html.DisplayFor(model => model.AuthorLastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CallNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CallNumber)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

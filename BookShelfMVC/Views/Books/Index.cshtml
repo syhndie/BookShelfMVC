@@ -1,0 +1,72 @@
+﻿@model IndexViewModel;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 id="body-content-title">Index</h2>
+
+<br />
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+    <div>
+        <form asp-controller="Books" asp-action="Index" method="get">
+            Title: <input type="text" name="titleFilter" value="@(Model.TitleFilter)" /> &emsp;
+            Author Last Name: <input type="text" name="authorLastNameFilter" value="@(Model.AuthorLastNameFilter)" />
+            <input type="hidden" name="sort" value="@(Model.Sort)" />
+            <input type="submit" value="Filter" />
+
+        </form>
+
+        <form asp-controller="Books" asp-action="Index" method="get">
+            <input type="hidden" name="titleFilter" value="" />
+            <input type="hidden" name="authorLastNameFilter" value="" />
+            <input type="hidden" name="sort" value="@(Model.Sort)" />
+            <input type="submit" value="Clear Filter" />
+        </form>
+    </div>
+    <br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a href="/Books?titleFilter=@(Model.TitleFilter)&authorLastNameFilter=@(Model.AuthorLastNameFilter)&sort=@(Model.Sort == "title-asc" ? "title-desc" : "title-asc")">@Html.DisplayNameFor(model => model.Books[0].Title)</a>
+            </th>
+            <th>
+                <a href="/Books?titleFilter=@(Model.TitleFilter)&authorLastNameFilter=@(Model.AuthorLastNameFilter)&sort=@(Model.Sort == "author-asc" ? "author-desc" : "author-asc")">Author</a>
+            </th>
+            <th>
+                <a href="/Books?titleFilter=@(Model.TitleFilter)&authorLastNameFilter=@(Model.AuthorLastNameFilter)&sort=@(Model.Sort == "callno-asc" ? "callno-desc" : "callno-asc")">@Html.DisplayNameFor(model => model.Books[0].CallNumber)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Books) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CallNumber)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+
+                @*For now, I am leaving the Details link out, but I might add it back in later*@
+                @*<a asp-action="Details" asp-route-id="@item.ID">Details</a> |*@
+
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
