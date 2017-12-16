@@ -11,9 +11,10 @@ using System;
 namespace BookShelfMVC.Migrations
 {
     [DbContext(typeof(BookShelfMVCContext))]
-    partial class BookShelfMVCContextModelSnapshot : ModelSnapshot
+    [Migration("20171216235429_MadeBookFieldsRequired")]
+    partial class MadeBookFieldsRequired
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

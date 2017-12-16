@@ -19,6 +19,7 @@ namespace BookShelfMVC.Models
         [Display(Name = "Author First Name")]
         public string AuthorFirstName { get; set; }
 
+        [Required]
         [Display(Name = "Call Number")]
         public string CallNumber { get; set; }
 
